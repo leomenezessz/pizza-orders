@@ -4,18 +4,17 @@ provider "aws" {
   profile                 = "${var.profile}"
 }
 
-resource "aws_s3_bucket" "test-bucket" {
-  bucket = "terraform-bucket-leomenezessz"
-  acl    = "private"
+module "terraform_test_bucket" {
+  source = "./buckets"
+  name = "terraform-test-bucket-leomenezessz"
+  local_file = "hey-this-is-really-beautiful.txt"
+  destiny_file = "file/my-beautiful-file.txt"
+} 
 
+module "ec2" {
+  source = "./ec2"
   tags = {
-    Name        = "Leo"
-    Environment = "Dev"
+    Name = "EC2-Terraform-Test"
   }
 }
 
-resource "aws_s3_bucket_object" "object" {
-  bucket = "${aws_s3_bucket.test-bucket.id}"
-  key    = "hey-this-is-really-beautiful.txt"
-  source = "file/my-beautiful-file.txt"
-}
