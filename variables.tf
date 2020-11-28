@@ -8,9 +8,15 @@ variable "region" {
   description = "Default Region"
 }
 
+variable "account_id" {
+  default     = "727646912140"
+  description = "Account Id"
+}
+
+
 variable "profile" {
   default     = "default"
-  description = "Default profile"
+  description = "Default Profile"
 }
 
 
