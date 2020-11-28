@@ -1,0 +1,16 @@
+{
+  "name": "orders",
+  "version": "1.0.0",
+  "description": "Orders lambda function",
+  "main": "orders.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Leonardo Menezes",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.799.0",
+    "shared-helpers": "file:~/terraform-playground/lambdas/libs/shared_helpers",
+    "uuid": "^8.3.1"
+  }
+}
