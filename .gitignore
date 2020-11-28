@@ -40,3 +40,5 @@ terraform.rc
 *.package-lock.json
 aws.xml
 *.xml
+.DS_Store
+
