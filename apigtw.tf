@@ -63,7 +63,7 @@ resource "aws_api_gateway_integration" "OrderIntegration" {
 # Deployment
 
 resource "aws_api_gateway_deployment" "OrdersAPIDeployment" {
-  depends_on  = [aws_api_gateway_integration.OrdersIntegration]
+  depends_on  = [aws_api_gateway_integration.OrdersIntegration, aws_api_gateway_integration.OrderIntegration]
   rest_api_id = aws_api_gateway_rest_api.OrdersAPI.id
   stage_name  = "dev"
 }
