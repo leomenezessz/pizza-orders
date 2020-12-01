@@ -5,6 +5,7 @@
 resource "null_resource" "build_lambda_layers" {
   triggers = {
     "layer_build" = filemd5("${path.module}/lambda-layer/nodejs/package.json")
+    "lib" = filemd5("${path.module}/lambda-layer/nodejs/shared-helpers.js")
   }
 
   provisioner "local-exec" {
@@ -14,7 +15,7 @@ resource "null_resource" "build_lambda_layers" {
 
 resource "aws_lambda_layer_version" "orders_layer" {
   filename            = "${path.module}/lambda-layer/nodejs.zip"
-  layer_name          = "lambda-layer"
+  layer_name          = "lambdas-layer"
   compatible_runtimes = ["nodejs12.x"]
   depends_on = [
     null_resource.build_lambda_layers
