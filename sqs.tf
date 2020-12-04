@@ -2,22 +2,20 @@ resource "aws_sqs_queue_policy" "sqs_queue_policy" {
   queue_url = aws_sqs_queue.orders_queue.id
   policy = <<POLICY
 {
-  "Id": "Policy1606976892127",
   "Version": "2012-10-17",
+  "Id": "Policy1607066400895",
   "Statement": [
     {
-      "Sid": "Stmt1606976883256",
-      "Action": [
-        "sqs:SendMessage"
-      ],
+      "Sid": "Stmt1607066399580",
       "Effect": "Allow",
+      "Principal": "*",
+      "Action": "sqs:*",
       "Resource": "arn:aws:sqs:us-east-1:727646912140:orders-queue",
       "Condition": {
-        "IpAddress": {
-          "aws:SourceIp": "189.100.68.5"
+        "ArnEquals": {
+          "aws:SourceArn": "arn:aws:sns:us-east-1:727646912140:orders"
         }
-      },
-      "Principal": "*"
+      }
     }
   ]
 }
